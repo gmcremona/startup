@@ -1,0 +1,45 @@
+/* ejercicio 2.2 */
+section {
+    text-align: center;
+}
+
+div {
+    float: left;
+}
+article {
+    border: 2px solid black;
+}
+img {
+    border: 2px solid black;
+}
+
+header {
+    margin-top: 10px;
+}
+
+.main-conteiner{
+	width:100%;
+}
+
+#boton {
+    margin: 0 auto;
+    display: block;
+}
+
+/* ejercicio 2.3 */
+.appers {
+    display: none;
+}
+.conteiner {
+    float: right;
+}
+
+input.alias {
+    text-align: left;
+}
+
+@media all and (max-width: 400px){
+	.main-conteiner{
+	width:320px;
+}
+}

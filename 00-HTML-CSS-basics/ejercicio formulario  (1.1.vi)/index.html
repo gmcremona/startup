@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--Resolucion ejercicio 1.1.vi-->
+<html lang="en">
+
+<head>
+    <title>My Form!</title>
+    <meta charset="utf-8" />
+    <!-- ejercicio 1.2.iii-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ejercicio 1.2.iii,  ejercicio 1.2.iv-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="jquery.h5validate.min.js"></script>
+
+
+    <!-- necesary style for h5validate, turns the field red when goes invalid -->
+    <style>
+    .ui-state-error {
+        background-color: red;
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        First name:
+        <input type="text" name="name" id="fname" maxlength="60" placeholder="Name" autocomplete="off" required/>
+        <br> Last name:
+        <input type="text" name="name" id="lname" maxlength="60" placeholder="Last name" autocomplete="off" required/>
+        <br> email:
+        <input type="text" class="h5-email" placeholder="example@mail.com" required />
+        <br> Birthday:
+        <input id="name" name="name" type="text" placeholder="mm/dd/yyyy" title="mm/dd/yyyy" pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" />
+        <br> Favorite Sport:
+        <select name="cars">
+            <option value="volvo"> </option>
+            <option value="volvo">Basket</option>
+            <option value="saab">Soccer</option>
+            <option value="fiat">Futbol</option>
+            <option value="audi">Tennis</option>
+        </select>
+        <br> My bio:
+        <textarea name="bio" rows="4" cols="50"></textarea>
+        <br>
+        <input type="submit" value="Send">
+        <input type="reset" value="Clear form" />
+        <!-- this script checks the form, if it's valid allows submit -->
+        <script>
+        $(document).ready(function() {
+            $('form').h5Validate();
+
+        });
+        </script>
+    </form>
+</body>
+
+</html>

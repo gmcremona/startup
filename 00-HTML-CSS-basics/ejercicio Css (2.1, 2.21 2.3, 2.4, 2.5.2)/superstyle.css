@@ -1,0 +1,140 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+/*HTML TAGS*/
+
+html {
+    /* ejercicio 2.2.ii */
+    
+    font-family: Verdana;
+    font-size: 14px;
+}
+header {
+    background-color: black;
+    /* ejercicio 2.2.i */
+    
+    color: white;
+    text-align: center;
+    /* ejercicio 2.2.iii */
+    
+    padding: 5px;
+}
+footer {
+    background-color: black;
+    /* ejercicio 2.2.i */
+    
+    color: white;
+    clear: both;
+    text-align: center;
+    /* ejercicio 2.2.iii */
+    
+    padding: 5px;
+}
+nav {
+    line-height: 30px;
+    background-color: #eeeeee;
+    /* ejercicio 2.2.i */
+    
+    height: 300px;
+    width: 15%;
+    display: inline-block;
+    /* ejercicio 2.5.1.1 */
+    
+    padding: 5px;
+    float: left;
+}
+section {
+    width: 70%;
+    height: 300px;
+    display: inline-block;
+    /* ejercicio 2.5.1.1 */
+    
+    padding: 10px;
+    float: left;
+    background-color: #444444;
+}
+aside {
+    line-height: 30px;
+    background-color: #eeeeee;
+    /* ejercicio 2.2.i */
+    
+    height: 300px;
+    width: 15%;
+    display: inline-block;
+    /* ejercicio 2.5.1.1 */
+    
+    padding: 5px;
+    float: right;
+}
+/* CLASS */
+/* ejercicio 2.3.2, ejercicio 2.3.3 */
+
+.header {
+    font-size: 46px;
+}
+.footer {
+    font-size: 10px;
+}
+.navigation {
+    font-size: 12px;
+}
+.sidebar {
+    font-size: 10px;
+}
+.content {
+    font-size: 14px;
+}
+/* Pattern Class Selectors */
+/* ejercicio 2.3.4 */
+
+[class$="r"] {
+    /* serchs if there's any class selector that ends with the "r" caracter */
+    
+    background-color: magenta;
+}
+/* ejercicio 2.3.5 */
+
+[class*="a"]:not([class$="r"]) {
+    /*serchs if there's any class selector with the "a" carater inside of it and not ends with "r" caracter*/
+    
+    background-color: orange;
+}
+/* ejercicio 2.3.6: La solucion que encontre seria definir un selector 
+                    de esta forma "html * {
+                                           font-family: 20px !important;
+                                    }"
+                    ese selector compite contra todos los elementos dentro del html, y el important le da el peso para ganarle a cualquier otro selector ya que tiene peso maximo (1,0,0,0,0)
+ */
+/* ejercicio 2.3.7: La respuesta seria darle a la clase ”oh-no-inline-styles” una declaracion
+                    de esta forma "oh-no-inline-styles {
+                                           background-color: green !important
+                                    }"
+                    asi tenria un peso de (1,0,0,0,0) contra el inline style que es de (1,0,0,0)
+ */
+@media all and(max-width:320px ){
+   html {
+  
+    
+    font-family: Verdana;
+    font-size: 8px;
+}
+
+   .header {
+    font-size: 12px;
+}
+.footer {
+    font-size: 8px;
+}
+.navigation {
+    font-size: 10px;
+}
+.sidebar {
+    font-size: 8px;
+}
+.content {
+    font-size: 10px;
+}
+
+}
