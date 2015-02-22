@@ -6,12 +6,19 @@ $(document).ready(function() {
     });
 
     $("button").click(function() { // ejercicio 2.7 //
-        $.get('http://bootcamp.aws.af.cm/welcome/yourname', function(Response) {
-            var input = document.getElementById("textbox");
+        var input = document.getElementById("textbox");
+        var name = input.value; 
+        $.get('http://bootcamp.aws.af.cm/welcome/'+name,{
+        })
+        .done(function(Response) {
+            
             input.value = Response.response; // ejercicio 2.8 //
-            input.setSelectionRange(8, 16);//ejercicio 2.10 //
-            input.focus(); //ejercicio 2.10 //
-        }).fail(function() { // ejercicio 2.9
+            var init=Response.response.indexOf(" ");
+            var fin=Response.response.indexOf("!");
+            input.setSelectionRange(init+1, fin);//ejercicio 2.10 //
+            input.focus();
+        })  //ejercicio 2.10 //
+        .fail(function() { // ejercicio 2.9
             $("section").css("background-color", "red");
         });
     });
