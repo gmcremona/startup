@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>Mustache</title>
+<meta charset="utf-8" />
+
+</head>
+
+<body>
+    <div class="conteiner">
+        <h1>Movie Manager!</h1>
+        <hr>
+        <div class="page">
+            <ul class="movies">
+                <script id="template" type="text/x-handlebars-template">
+                    {{#each this}}
+                    <li>
+                        <h3>{{title}} - <span>({{year}})</span></h3>
+                        <p>Genre: {{genre}}</p>                  
+                        <a href='#/See/{{identifier}}'>More info!</a>                       
+                        <p>Plot : {{plot}}</p>                
+                        <p>Director: {{director}}</p>
+                        <p>Stars: {{stars}}</p>
+                        <a href='#/See/{{identifier}}'>More info!</a>
+                    </li>
+                    {{/each}}
+                </script>
+				
+                <script id="templateform" type="text/x-handlebars-template">
+                	<form class="edit-form">
+						<legend> Edit a movie!</legend>
+						<label>title</label>
+						<input type="text" name="title" value="{{title}}"/>
+						<label >year</label>
+						<input type="text" name="year" value="{{year}}"/>
+						<label >Genre</label>
+						<input type="text" name="genre" value="{{genre}}"/>
+						<label >Plot</label>
+						<input type="text" name="plot" value="{{plot}}"/>
+						<label >Director</label>
+						<input type="text" name="director" value="{{director}}"/>
+						<label >Stars</label>
+						<input type="text" name="stars" value="{{stars}}"/>
+						<hr>
+						<button type="submit" class="btn">aca</button>
+					</form>
+                </script>
+            </ul>
+        </div>
+    </div>
+	
+	 <script src="jquery.js"></script>
+	<script src="handlebars.js"></script>
+	<script src="underscore.js"></script>
+	<script src="backbone-min.js"></script>
+    <script>
+    var Movie = Backbone.Model.extend({
+        initialize: function() {},
+        
+    });
+
+    var Movies = Backbone.Collection.extend({
+        model: Movie,
+        initialize: function() {}
+            /*data: [{
+                title: "Leon The Profesional",
+                year: 1994,
+                plot: "Mathilda, a 12-year-old girl, is reluctantly taken in by Léon, a professional assassin, after her family is murdered. Léon and Mathilda form an unusual relationship, as she becomes his protégée and learns the assassin's trade.",
+                genre: "Crime | Drama | Thriller",
+                director: "Luc Besson",
+                stars: "Jean Reno, Gary Oldman, Natalie Portman"
+            }, {
+                title: "The Shawshank Redemption",
+                year: 1994,
+                plot: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+                genre: "Crime | Drama",
+                director: "Frank Darabont",
+                stars: " Tim Robbins, Morgan Freeman, Bob Gunton"
+            }, {
+                title: "Fight Club",
+                year: 1999,
+                plot: "An insomniac office worker looking for a way to change his life crosses paths with a devil-may-care soap maker and they form an underground fight club that evolves into something much, much more...",
+                genre: "Drama",
+                director: "David Fincher",
+                stars: "Brad Pitt, Edward Norton, Helena Bonham Carter"
+            }]*/
+    });
+
+    var movie1 = new Movie({
+        title: "Leon The Profesional",
+        year: 1994,
+        plot: "Mathilda, a 12-year-old girl, is reluctantly taken in by Léon, a professional assassin, after her family is murdered. Léon and Mathilda form an unusual relationship, as she becomes his protégée and learns the assassin's trade.",
+        genre: "Crime | Drama | Thriller",
+        director: "Luc Besson",
+        stars: "Jean Reno, Gary Oldman, Natalie Portman",
+        identifier:0
+
+    });
+    var movie2 = new Movie({
+        title: "The Shawshank Redemption",
+        year: 1994,
+        plot: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        genre: "Crime | Drama",
+        director: "Frank Darabont",
+        stars: " Tim Robbins, Morgan Freeman, Bob Gunton",
+        identifier:1
+    });
+    var movie3 = new Movie({
+        title: "Fight Club",
+        year: 1999,
+        plot: "An insomniac office worker looking for a way to change his life crosses paths with a devil-may-care soap maker and they form an underground fight club that evolves into something much, much more...",
+        genre: "Drama",
+        director: "David Fincher",
+        stars: "Brad Pitt, Edward Norton, Helena Bonham Carter",        
+        identifier:2
+    });
+    var movies = new Movies([movie1, movie2, movie3]);
+    var MovieListView = Backbone.View.extend({
+        render: function() {
+            //var movies = new Movies();
+            obj = JSON.parse(JSON.stringify(movies.models));
+            var template = Handlebars.compile($("#template").html()); 
+            //console.log(template(obj));           
+            $(".movies").append(template(obj));
+           
+
+        },
+       
+    });
+
+    var MovieView = Backbone.View.extend({
+    	render: function(id){   		
+    		obj = JSON.parse(JSON.stringify(movies.models[id]));
+    		
+    		//console.log(obj);
+    		var template = Handlebars.compile($("#templateform").html());    		
+    		$(".movies").html(template(obj));
+    		console.log($(".btn"));
+    		
+    	},
+    	events: {
+        	'submit .edit-form' : 'otra'
+        },
+        otra: function(ev){
+        	
+        	router.navigate("", {trigger: true});
+        	return false;
+        }
+    });
+
+    var Router = Backbone.Router.extend({
+        routes: {
+            "": "home",
+            "See/:id": "seeUser"
+        }
+    });
+
+    var movieList = new MovieListView();
+    var movieView = new MovieView();
+
+
+    var router = new Router();
+    router.on('route:home', function() {
+        movieList.render();
+    });
+    router.on('route:seeUser', function(id) {
+        movieView.render(id);
+    });
+
+
+    Backbone.history.start();
+    </script>
+   
+</body>
+
+</html>

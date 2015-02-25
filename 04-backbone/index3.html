@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Mustache</title>
+<meta charset="utf-8" />
+
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Movie Manager!</h1>
+        <hr>
+        <div class="page">
+            
+        </div>
+    </div>
+
+    
+	
+	  <script type="text/x-handlebars-template" id="movie-list-template">
+	    <a href="#/new" class="btn btn-primary">New</a>
+	    <hr />
+	    <table class="table striped">
+	      <thead>
+	        <tr>
+	          <th>Title</th><th>Release year</th><th>Director</th><th></th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	{{#each this}}	        
+	          <tr>
+	            <td>{{title}}</td>
+	            <td>{{year}}</td>
+	            <td>{{director}}</td>
+	        
+	            <td><a class="btn" href="#/edit/{{_id}}">Edit</a></td>
+	          </tr>
+	        {{/each}}
+	      </tbody>
+	    </table>
+	  </script>
+
+	  <script type="text/template" id="edit-movie-template">
+	    <form class="edit-movie-form">
+	      <legend>{{#if this}} 'Edit' {{else}} 'New' {{/if}}</legend> 
+	        <label>Title</label>
+	        <input name="title" type="text" value={{#if this}} {{title}} {{else}} '' {{/if}}> 
+	        <label>Release year</label>
+	        <input name="year" type="text" value={{#if this}} {{year}} {{else}} '' {{/if}}> 
+	        <label>Director</label>
+	        <input name="director" type="text" value={{#if this}} {{director}} {{else}} '' {{/if}}> 
+	        <label>Genre</label>
+	        <input name="genre" type="text" value={{#if this}} {{genre}} {{else}} '' {{/if}}> 
+	        <label>Plot</label>
+	        <input name="plot" type="text" value={{#if this}} {{plot}} {{else}} '' {{/if}}> 
+	        <label>Stars</label>
+	        <input name="stars" type="text" value={{#if this}} {{stars}} {{else}} '' {{/if}}> 
+	        <hr />
+	       <button type="submit" class="btn">{{#if this}} 'Update' {{else}} 'Create' {{/if}}</button> 
+	       {{#if this}}
+	        <input type="hidden" name="id" value={{id}} />
+	       <button data-user-id={{id}} class="btn btn-danger delete">Delete</button>
+	       {{/if}}
+	    </form>
+	  </script>
+
+
+
+    <script src="jquery.js"></script>
+    <script src="handlebars.js"></script>
+    <script src="underscore.js"></script>
+    <script src="backbone-min.js"></script>
+    <script>
+    
+
+    $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+        options.url = 'http://localhost:8000/api' + options.url;
+    });
+
+    $.fn.serializeObject = function() {
+      var o = {};
+      var a = this.serializeArray();
+      $.each(a, function() {
+          if (o[this.name] !== undefined) {
+              if (!o[this.name].push) {
+                  o[this.name] = [o[this.name]];
+              }
+              o[this.name].push(this.value || '');
+          } else {
+              o[this.name] = this.value || '';
+          }
+      });
+      return o;
+    };
+
+
+    var Movie = Backbone.Model.extend({
+        urlRoot: '/movies'
+
+    });
+
+    var MovieList = Backbone.Collection.extend({
+        url: '/movies'
+
+    });
+
+
+
+    var MovieListView = Backbone.View.extend({
+        el: '.page',
+        render: function() {
+            var that = this;
+            var movieList = new MovieList();
+            movieList.fetch({
+                success: function(movieList) {
+                    var template = Handlebars.compile($("#movie-list-template").html());
+                    obj = JSON.parse(JSON.stringify(movieList.models));
+                    that.$el.html(template(obj)); //problemas aca seguro
+                }
+            })
+        }
+    });
+
+    var movieListView = new MovieListView();
+
+
+
+    var MovieEditView = Backbone.View.extend({
+      el: '.page',
+      events: {
+        'submit .edit-movie-form': 'saveMovie',
+        'click .delete': 'deleteMovie'
+      },
+      saveMovie: function (ev) {
+        var movieDetails = $(ev.currentTarget).serializeObject();
+        var movie = new Movie();
+        movie.save(movieDetails, {
+          success: function (movie) {
+            router.navigate('', {trigger:true});
+          }
+        });
+        return false;
+      },
+      deleteMovie: function (ev) {
+        this.movie.destroy({
+          success: function () {
+            console.log('destroyed');
+            router.navigate('', {trigger:true});
+          }
+        });
+        return false;
+      },
+      render: function (options) {
+        var that = this;
+        if(options.id) {
+          that.movie = new Movie({id: options.id});
+          that.movie.fetch({
+            success: function (movie) {    
+              var template = Handlebars.compile($("#edit-movie-template").html());
+              obj = JSON.parse(JSON.stringify(movie));
+              that.$el.html(template(obj));
+            }
+          })
+        } else {
+          var template = Handlebars.compile($("#edit-movie-template").html());
+          that.$el.html(template);
+        }
+      }
+    });
+
+
+	var movieEditView = new MovieEditView();
+
+
+    var Router = Backbone.Router.extend({
+        routes: {
+          "": "home", 
+          "edit/:id": "edit",
+          "new": "edit",
+        }
+    });
+
+
+
+    var router = new Router();
+    router.on("route:home", function() {
+        movieListView.render();
+    });
+    router.on('route:edit', function(id) {
+      movieEditView.render({id: id});
+    })
+
+    Backbone.history.start();
+    </script>
+
+</body>
+
+</html>
