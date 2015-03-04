@@ -1,0 +1,20 @@
+ <a href="#/new" class="btn btn-primary">New</a>
+	    <hr />
+	    <table class="table striped">
+	      <thead>
+	        <tr>
+	          <th>Title</th><th>Release year</th><th>Director</th><th></th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	{{#each this}}	        
+	          <tr>
+	            <td>{{title}}</td>
+	            <td>{{year}}</td>
+	            <td>{{director}}</td>
+	        
+	            <td><a class="btn" href="#/edit/{{_id}}">Edit</a></td>
+	          </tr>
+	        {{/each}}
+	      </tbody>
+	    </table>

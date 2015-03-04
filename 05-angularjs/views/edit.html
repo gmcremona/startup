@@ -1,0 +1,25 @@
+
+	    <form class="edit-movie-form">
+	      <legend ng-if="id == null">'Create'</legend> <!--{{#if this}} 'Edit' {{else}} 'New' {{/if}}-->
+ 		  <legend ng-if="id != null">'Edit'</legend>
+
+	        <label>Title</label>
+	        <input type="text" ng-model="title"> 
+	        <label>Release year</label>
+	        <input type="text" ng-model="year"> 
+	        <label>Director</label>
+	        <input type="text" ng-model="director"> 
+	        <label>Genre</label>
+	        <input type="text" ng-model="genre"> 
+	        <label>Plot</label>
+	        <input type="text" ng-model="plot"> 
+	        <label>Stars</label>
+	        <input type="text" ng-model="stars"> 
+	        <hr />
+	       <button type="submit" class="btn" ng-click="addMovie()">Update</button><!--{{#if this}} 'Update' {{else}} 'Create' {{/if}} -->
+	       <!--{{#if this}}-->
+	        <input type="hidden" ng-model="id" />
+	       <button class="btn btn-danger delete" ng-if="id != null" ng-click="deleteMovie()" >Delete</button>
+	      <!-- {{/if}}-->
+	    </form>
+		

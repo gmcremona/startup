@@ -1,0 +1,22 @@
+[{
+                title: "Leon The Profesional",
+                year: 1994,
+                plot: "Mathilda, a 12-year-old girl, is reluctantly taken in by Léon, a professional assassin, after her family is murdered. Léon and Mathilda form an unusual relationship, as she becomes his protégée and learns the assassin's trade.",
+                genre: "Crime | Drama | Thriller",
+                director: "Luc Besson",
+                stars: "Jean Reno, Gary Oldman, Natalie Portman"
+            }, {
+                title: "The Shawshank Redemption",
+                year: 1994,
+                plot: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+                genre: "Crime | Drama",
+                director: "Frank Darabont",
+                stars: " Tim Robbins, Morgan Freeman, Bob Gunton"
+            }, {
+                title: "Fight Club",
+                year: 1999,
+                plot: "An insomniac office worker looking for a way to change his life crosses paths with a devil-may-care soap maker and they form an underground fight club that evolves into something much, much more...",
+                genre: "Drama",
+                director: "David Fincher",
+                stars: "Brad Pitt, Edward Norton, Helena Bonham Carter"
+            }]

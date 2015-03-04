@@ -1,0 +1,22 @@
+            <h1>Movie Manager!</h1>
+            <a href="#/new" class="btn btn-primary">New</a>
+            <hr />
+            <table class="table striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Release year</th>
+                        <th>Director</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>                   
+                    <tr ng-repeat="movie in movies">
+                        <td>{{movie.title}}</td>
+                        <td>{{movie.year}}</td>
+                        <td>{{movie.director}}</td>
+                        <td><a class="btn" href="#/edit/{{movie._id}}">Edit</a>
+                        </td>
+                    </tr>                   
+                </tbody>
+            </table>

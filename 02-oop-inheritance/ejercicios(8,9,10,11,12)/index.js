@@ -189,7 +189,7 @@ titanic.like();
 
         /* Resolucion ejercicio 12*/
 
-/*preguntar las ideas de este punto */
+/*preguntar las ideas de este punto, el arreglo(sin valores) lo puedo agregar a todas las peliculas y desp setear este */
 titanic.Cast = {jack_Dawson: diCaprio,
-                Rose_DeWitt Bukater: Winslet
+                Rose_DeWitt_Bukater: Winslet
                 };
