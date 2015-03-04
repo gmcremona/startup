@@ -90,7 +90,7 @@ aside {
 /* ejercicio 2.3.4 */
 
 [class$="r"] {
-    /* serchs if there's any class selector that ends with the "r" caracter */
+    /* searchs if there's any class selector that ends with the "r" caracter */
     
     background-color: magenta;
 }
@@ -103,7 +103,7 @@ aside {
 }
 /* ejercicio 2.3.6: La solucion que encontre seria definir un selector 
                     de esta forma "html * {
-                                           font-family: 20px !important;
+                                           font-size: 20px !important;
                                     }"
                     ese selector compite contra todos los elementos dentro del html, y el important le da el peso para ganarle a cualquier otro selector ya que tiene peso maximo (1,0,0,0,0)
  */
@@ -113,6 +113,9 @@ aside {
                                     }"
                     asi tenria un peso de (1,0,0,0,0) contra el inline style que es de (1,0,0,0)
  */
+
+
+
 @media all and(max-width:320px ){
    html {
   

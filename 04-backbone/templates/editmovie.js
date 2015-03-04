@@ -7,41 +7,41 @@ templates['editmovie'] = template({"1":function(depth0,helpers,partials,data) {
 },"5":function(depth0,helpers,partials,data) {
     var helper;
 
-  return " "
+  return " \""
     + this.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
-    + " ";
+    + "\" ";
 },"7":function(depth0,helpers,partials,data) {
     return " '' ";
 },"9":function(depth0,helpers,partials,data) {
     var helper;
 
-  return " "
+  return " \""
     + this.escapeExpression(((helper = (helper = helpers.year || (depth0 != null ? depth0.year : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"year","hash":{},"data":data}) : helper)))
-    + " ";
+    + "\" ";
 },"11":function(depth0,helpers,partials,data) {
     var helper;
 
-  return " "
+  return " \""
     + this.escapeExpression(((helper = (helper = helpers.director || (depth0 != null ? depth0.director : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"director","hash":{},"data":data}) : helper)))
-    + " ";
+    + "\" ";
 },"13":function(depth0,helpers,partials,data) {
     var helper;
 
-  return " "
+  return " \""
     + this.escapeExpression(((helper = (helper = helpers.genre || (depth0 != null ? depth0.genre : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"genre","hash":{},"data":data}) : helper)))
-    + " ";
+    + "\" ";
 },"15":function(depth0,helpers,partials,data) {
     var helper;
 
-  return " "
+  return "\""
     + this.escapeExpression(((helper = (helper = helpers.plot || (depth0 != null ? depth0.plot : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"plot","hash":{},"data":data}) : helper)))
-    + " ";
+    + "\" ";
 },"17":function(depth0,helpers,partials,data) {
     var helper;
 
-  return " "
+  return " \""
     + this.escapeExpression(((helper = (helper = helpers.stars || (depth0 != null ? depth0.stars : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"stars","hash":{},"data":data}) : helper)))
-    + " ";
+    + "\" ";
 },"19":function(depth0,helpers,partials,data) {
     return " 'Update' ";
 },"21":function(depth0,helpers,partials,data) {

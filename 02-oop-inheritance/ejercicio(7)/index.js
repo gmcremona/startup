@@ -1,9 +1,9 @@
 var MovieObserver = {
     update: function() {
         if (arguments[1] === "play") {
-            console.log('Now playing: ', arguments[0]); 
+            console.log('Now playing: ', arguments[0]);
         } else {
-            console.log('Stopped: ', arguments[0]); 
+            console.log('Stopped: ', arguments[0]);
         }
     }
 };
@@ -12,7 +12,7 @@ var MovieObserver = {
 
 
 var Subject = (function(window, undefined) {
-   
+
     function Subject() {
         this._list = [];
     }
@@ -46,49 +46,49 @@ Subject.prototype.notify = function notifyObservers() {
     }
 };
 
-				/*Resolucion ejercicio 7*/
+/*Resolucion ejercicio 7*/
 /*En este objeto las dos variables no son alcanzables desde el scope global, pero 
 tampoco puede prototipar sus metodos ya que necesitan acceso a esas variables, las
 cuales ahora son privadas.*/
 var Movie = (function() {
-	    var privateAttributes = {};
-	    var privateSubject = new Subject();
+    var privateAttributes = {};
+    var privateSubject = new Subject();
 
-	    function publicAddObserver(newObserver) {
-	        privateSubject.observe(newObserver);
-	    }
+    function publicAddObserver(newObserver) {
+        privateSubject.observe(newObserver);
+    }
 
-	    function publicRemoveObserver(deleteObserver) {
-	       privateSubject.unobserve(deleteObserver);
-	    }
+    function publicRemoveObserver(deleteObserver) {
+        privateSubject.unobserve(deleteObserver);
+    }
 
-	    function publicplay() {
-	        privateSubject.notify(privateAttributes["title"], "play");
-	        //console.log("now playing" + this.attributes["title"]);
-	    }
+    function publicplay() {
+        privateSubject.notify(privateAttributes["title"], "play");
+        //console.log("now playing" + this.attributes["title"]);
+    }
 
-	    function publicStop() {
-	        privateSubject.notify(privateAttributes["title"], "stop");
-	    }
+    function publicStop() {
+        privateSubject.notify(privateAttributes["title"], "stop");
+    }
 
-	    function publicSet(key, value) {
-	        privateAttributes[key] = value;
-	    }
+    function publicSet(key, value) {
+        privateAttributes[key] = value;
+    }
 
-	    function publicGet(key) {
-	        return privateAttributes[key];
-	    };
+    function publicGet(key) {
+        return privateAttributes[key];
+    };
 
-	    return {
-	    	addObserver: publicAddObserver,
-	    	removeObserver: publicRemoveObserver,
-	    	play: publicplay,
-	    	stop: publicStop,
-	    	set: publicSet,
-	    	get: publicGet
-	    }
+    return {
+        addObserver: publicAddObserver,
+        removeObserver: publicRemoveObserver,
+        play: publicplay,
+        stop: publicStop,
+        set: publicSet,
+        get: publicGet
+    }
 
-	})
+})
 
 terminator = new Movie();
 terminator.set('title', 'Terminator');

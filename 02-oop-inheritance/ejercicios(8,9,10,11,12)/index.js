@@ -85,7 +85,7 @@ var MovieObserver = {
     }
 };
 
-            /*Resolucion ejercicio 8*/
+/*Resolucion ejercicio 8*/
 
 DownloadableMovie.prototype = new Movie(); /*Con esta declaracion estoy diciendo que mi objeto hereda toda la funcionalidad de Movie*/
 DownloadableMovie.prototype.constructor = DownloadableMovie; /*preguntar si hace falta ya que lo defino abajo, ademas como llamo al del padre es casi innecesario*/
@@ -99,7 +99,7 @@ DownloadableMovie.prototype.download = function() {
     console.log("download")
 };
 
-                /* Resolucion ejercicio 9 */
+/* Resolucion ejercicio 9 */
 /*Este es mi objeto mixin que agrega 2 metodos,*/
 /*preguntar si se puede prototipar o si estos duplican codigo*/
 var Social = {
@@ -113,15 +113,15 @@ var Social = {
 
 $.extend(Movie.prototype, Social); /*Aca use la libreria Underscore por eso la tengo que agregar antes de correr todo este script*/
 
-                /*Resolucion ejercicio 11 */
+/*Resolucion ejercicio 11 */
 
 /* objeto Actor*/
 var Actor = (function(window, undefined) {
-    
+
     /*contructor del objeto*/
     function Actor() {
         this.name = "";
-        this.profile={}
+        this.profile = {}
         this.awards = {};
     }
 
@@ -148,21 +148,21 @@ Actor.prototype.setProfile = function(feature, value) {
     this.profile[feature] = name;
 }
 Actor.prototype.getProfile = function(feature) {
-    return this.profile[feature];
-}
- /*instanciacion del los objetos*/
+        return this.profile[feature];
+    }
+    /*instanciacion del los objetos*/
 var diCaprio = new Actor();
 diCaprio.setName("Leonardo Di Caprio");
 diCaprio.setAwards("The Wolf of Wall Street", "Nominated Academy Awards: Best Performance by an Actor in a Leading Role");
 diCaprio.setAwards("Blood Diamond", "Nominated Academy Awards: Best Performance by an Actor in a Leading Role");
-diCaprio.setProfile("hair","blond");
-diCaprio.setProfile("height","shorty");
+diCaprio.setProfile("hair", "blond");
+diCaprio.setProfile("height", "shorty");
 var Winslet = new Actor();
 Winslet.setName("Kate Winslet");
 Winslet.setAwards("The Reader", "Winner Academy Awards: Best Performance by an Actress in a Leading Rolee");
 Winslet.setAwards("Eternal Sunshine of the Spotless Mind", "Nominated Academy Awards: Best Performance by an Actress in a Leading Role");
-Winslet.setProfile("hair","blond");
-Winslet.setProfile("best-role","Slut");
+Winslet.setProfile("hair", "blond");
+Winslet.setProfile("best-role", "Slut");
 
 
 terminator = new Movie();
@@ -187,9 +187,10 @@ terminator.like();
 titanic.share('martin');
 titanic.like();
 
-        /* Resolucion ejercicio 12*/
-
+/* Resolucion ejercicio 12*/
+Movie.prototype.Cast = {};
 /*preguntar las ideas de este punto, el arreglo(sin valores) lo puedo agregar a todas las peliculas y desp setear este */
-titanic.Cast = {jack_Dawson: diCaprio,
-                Rose_DeWitt_Bukater: Winslet
-                };
+titanic.Cast = {
+    jack_Dawson: diCaprio,
+    Rose_DeWitt_Bukater: Winslet
+};

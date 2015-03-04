@@ -1,13 +1,13 @@
 /*Resolucion de los ejercicios 3,4,5,6 del topico 2 */
 
 
-            /*  Resolucion ejercicio 3 */
+/*  Resolucion ejercicio 3 */
 /*MovieObserver es el encargado de la accion una vez sucedido un evento
 es menester para este objeto implemtentar el update(),*/
 var MovieObserver = {
-    update: function() {/*el evento posee 2 atributos la pelicula, y el tipo de evento*/
+    update: function() { /*el evento posee 2 atributos la pelicula, y el tipo de evento*/
         if (arguments[1] === "play") {
-            console.log('Now playing: ', arguments[0]);  /*resolucion ejercicio 6*/
+            console.log('Now playing: ', arguments[0]); /*resolucion ejercicio 6*/
         } else {
             console.log('Stopped: ', arguments[0]); /*resolucion ejercicio 6*/
         }
@@ -73,15 +73,15 @@ Movie.prototype.addObserver = function(newObserver) {
 
 /*elimina un Observable de la pelicula*/
 Movie.prototype.removeObserver = function(deleteObserver) {
-    this.privateSubject.unobserve(deleteObserver);
-}
-/*ejecuta la reproduccion de la pelicula, lo cual dispara el evento "play"*/ 
+        this.privateSubject.unobserve(deleteObserver);
+    }
+    /*ejecuta la reproduccion de la pelicula, lo cual dispara el evento "play"*/
 Movie.prototype.play = function() {
     this.privateSubject.notify(this._attributes["title"], "play");
-    
+
 }
 
-/*detiene la reproduccion de la pelicula, lo cual dispara el evento "stop"*/ 
+/*detiene la reproduccion de la pelicula, lo cual dispara el evento "stop"*/
 Movie.prototype.stop = function() {
     this.privateSubject.notify(this._attributes["title"], "stop");
 }

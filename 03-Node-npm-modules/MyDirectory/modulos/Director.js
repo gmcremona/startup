@@ -9,14 +9,14 @@ var Director = (function() {
 
 
 Director.prototype.set = function(key, value) {
-    this.quotes['key'] = value;
+    this.quotes[key] = value;
 }
 
 Director.prototype.get = function(key, value) {
-    return this.quotes['key'];
+    return this.quotes[key];
 }
 
-Director.prototype.speak = function(){
-    console.log(this.name+" says: "+this.quotes['quotes']);
+Director.prototype.speak = function() {
+    console.log(this.name + " says: " + this.quotes['quotes']);
 }
 module.exports = Director;

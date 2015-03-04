@@ -1,13 +1,13 @@
- var myApp = angular.module('myApp', ['ngRoute']);
+ var myApp = angular.module('myApp', ['ngRoute']); 
 
 
- myApp.config(['$routeProvider', function($routeProvider) {
+ myApp.config(['$routeProvider', function($routeProvider) { //configuro las rutas
 
      /**
       * $routeProvider
       */
      $routeProvider
-         .when('/', {
+         .when('/', { 
              templateUrl: 'views/main.html',
              controller: 'MainCtrl'
          })
@@ -23,10 +23,6 @@
          .otherwise({
              redirectTo: '/'
          });
-     /* myApp.run(function($templateCache) {
-          $templateCache.put('templateId.html', 'This is the content of the template');
-      });
-      $templateCache.get('templateId.html')*/
  }]);
 
 

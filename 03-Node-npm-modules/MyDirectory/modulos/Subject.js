@@ -33,4 +33,4 @@ Subject.prototype.notify = function notifyObservers() {
         this._list[i].update.apply(null, args);
     }
 };
-module.exports=  Subject;
+module.exports = Subject;

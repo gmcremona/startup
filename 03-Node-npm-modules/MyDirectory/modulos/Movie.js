@@ -1,8 +1,7 @@
-
-var Subject =  require('./Subject.js');
+var Subject = require('./Subject.js');
 var Director = require('./Director.js')
-var Movie = (function( ){
-    
+var Movie = (function() {
+
     function Movie() {
         this.privateAttributes = {};
         this.privateSubject = new Subject();
@@ -43,7 +42,7 @@ var MovieObserver = {
         } else {
             console.log('Stopped: ', arguments[0]);
         }
-     }
+    }
 };
 
 
@@ -54,13 +53,12 @@ alien.set('title', 'Alien');
 alien.addObserver(MovieObserver);
 alien.play();
 var ridleyScott = new Director("Ridley Scott");
-ridleyScott.set('quotes', "['Cast is everything.', 'Do what ...']");
+ridleyScott.set('quotes', ['Cast is everything.', 'Do what ...']);
 alien.set('director', ridleyScott);
 alien.get('director').speak(); //output: Ridley Scott says: 'Cast is...'
 
-var $ =  require('./jquery.js');
-$(document).ready(function(){
-     $(".algo").append("<p>"+ridleyScott.get('quotes')+"</p>");
+/*----Agrego en el html los comentarios del director usando jquery ------*/
+var $ = require('./jquery.js');
+$(document).ready(function() {
+    $(".algo").append("<p>" + ridleyScott.get('quotes') + "</p>");
 })
-
-   

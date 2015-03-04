@@ -1,17 +1,17 @@
 <form class="edit-movie-form">
 	      <legend>{{#if this}} 'Edit' {{else}} 'New' {{/if}}</legend> 
 	        <label>Title</label>
-	        <input name="title" type="text" value={{#if this}} {{title}} {{else}} '' {{/if}}> 
+	        <input name="title" type="text" value={{#if this}} "{{title}}" {{else}} '' {{/if}}> 
 	        <label>Release year</label>
-	        <input name="year" type="text" value={{#if this}} {{year}} {{else}} '' {{/if}}> 
+	        <input name="year" type="text" value={{#if this}} "{{year}}" {{else}} '' {{/if}}> 
 	        <label>Director</label>
-	        <input name="director" type="text" value={{#if this}} {{director}} {{else}} '' {{/if}}> 
+	        <input name="director" type="text" value={{#if this}} "{{director}}" {{else}} '' {{/if}}> 
 	        <label>Genre</label>
-	        <input name="genre" type="text" value={{#if this}} {{genre}} {{else}} '' {{/if}}> 
+	        <input name="genre" type="text" value={{#if this}} "{{genre}}" {{else}} '' {{/if}}> 
 	        <label>Plot</label>
-	        <input name="plot" type="text" value={{#if this}} {{plot}} {{else}} '' {{/if}}> 
+	        <input name="plot" type="text" value={{#if this}}"{{plot}}" {{else}} '' {{/if}}> 
 	        <label>Stars</label>
-	        <input name="stars" type="text" value={{#if this}} {{stars}} {{else}} '' {{/if}}> 
+	        <input name="stars" type="text" value={{#if this}} "{{stars}}" {{else}} '' {{/if}}> 
 	        <hr />
 	       <button type="submit" class="btn">{{#if this}} 'Update' {{else}} 'Create' {{/if}}</button> 
 	       {{#if this}}
