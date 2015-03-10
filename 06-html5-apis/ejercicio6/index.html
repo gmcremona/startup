@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>requestAnimationFrame Demo</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="page-wrapper">
+    <h1>requestAnimationFrame Demo</h1>
+
+    <div class="controls">
+      <button type="button" id="startBtn">Start Animation</button>
+      <button type="button" id="stopBtn">Stop Animation</button>
+      <button type="button" id="resetBtn">Reset</button>
+    </div>
+
+    <canvas id="stage" width="640" height="100"></canvas>
+  </div>
+
+  <script src="raf-polyfill.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
