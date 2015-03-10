@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Canvas Demo!</title>
+    <script>
+    window.onload = function(){
+    	init();
+    }
+
+    function init(){
+    	window.requestAnimationFrame(draw);
+    }	
+
+    function draw() {
+        var canvas = document.getElementById("paper"),
+            c = canvas.getContext("2d");
+
+        c.fillStyle = "black";
+        c.fillRect(0, 0, canvas.width, canvas.height);
+
+        c.fillStyle = "red"
+        c.fillRect(20, 20, 100, 100);
+
+        c.strokeStyle = "white";
+        c.lineWidth = 3;
+        c.strokeRect(20, 20, 100, 100);
+
+        c.fillStyle = "white";
+        c.font = "15px Helvetica";
+        c.fillText("Cuadrangle", 30, 70);
+
+
+        c.strokeStyle = "7e9fc2";
+        c.lineWidth = 5;
+
+        c.fillStyle = "red"
+        c.beginPath();
+        c.moveTo(100, 100);
+        c.lineTo(200, 200);
+        c.lineTo(0, 200);
+        c.closePath();
+        c.stroke();
+        c.fill();
+
+        c.fillStyle = "white";
+        c.font = "20px Helvetica";
+        c.fillText("Triangle", 70, 180);
+
+
+        c.beginPath();
+        c.arc(400, 400, 50, 0, Math.PI * 2, false);
+        c.fill();
+        c.save();
+        for (pos = 0; pos < 500; pos++) {
+        	c.fillStyle = "black";
+        	c.fillRect(0, 0, canvas.width, canvas.height);
+            c.fillStyle = "white";
+            c.beginPath();
+            c.arc(pos, 300, 50, 0, Math.PI * 2, false);
+            c.fill();
+        }
+        window.requestAnimationFrame(draw);
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="paper" width="500" height="500"></canvas>
+</body>
+
+</html>
